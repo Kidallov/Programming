@@ -1,0 +1,37 @@
+<!--  <p>Обычная HTML страница, с помощью которой отображается БД</p> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы валют</title>
+</head>
+<body>
+    <h1>Курсы валют</h1>
+    <table border="1">
+        <tr>
+            <th>Валюта</th>
+            <th>Дата</th>
+            <th>Курс</th>
+        </tr>
+        {% for rate in rates %}
+        <tr>
+            <td>{{ rate[1] }}</td>
+            <td>{{ rate[2] }}</td>
+            <td>{{ rate[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+</style>
+
+</html>
