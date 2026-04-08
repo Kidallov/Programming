@@ -10,7 +10,7 @@
 [https://github.com/Kidallow/hugosite.github.io](https://github.com/Kidallow/hugosite.github.io)
 
 Далее проект был перенесен на платформу SourceCraft и настроен для автоматической сборки и развертывания:
-[https://sourcecraft.dev/kidallowv/demo1803](https://sourcecraft.dev/kidallowv/demo1803)
+[Выполненная лабораторная работа на Sourcecraft](https://sourcecraft.dev/kidallovv/demo1803)
 
 ## 2. Настройка проверок качества Markdown
 
