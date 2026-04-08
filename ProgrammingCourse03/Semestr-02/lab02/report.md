@@ -3,3 +3,7 @@
 В файле main.py реализованы все функции со следующими названиями: `standard`, `thread`, `process`, `nogil`, `cython`.
 
 Отдельный файл для реализации `cython` назвается `convolution_cython.pyx`
+
+Файл `setup.py` сделан для того, чтобы код, написанный на cython можно было импортировать в python
+
+Файл `test.py` в себя включает тесты для `main.py`
