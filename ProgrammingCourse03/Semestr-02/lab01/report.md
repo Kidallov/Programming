@@ -6,11 +6,9 @@
 
 ## 1. Перенос существующего проекта на SourceCraft
 
-Исходный сайт на Hugo был размещен на GitHub:
-[https://github.com/Kidallow/hugosite.github.io](https://github.com/Kidallow/hugosite.github.io)
+Исходный сайт на Hugo был размещен на [GitHub](https://github.com/Kidallov/hugosite.githubb.io).
 
-Далее проект был перенесен на платформу SourceCraft и настроен для автоматической сборки и развертывания:
-[Выполненная лабораторная работа на Sourcecraft](https://sourcecraft.dev/kidallovv/demo1803)
+Далее проект был перенесен на платформу [SourceCraft](https://sourcecraft.dev/kidallovv/demo1803) и настроен для автоматической сборки и развертывания.
 
 ## 2. Настройка проверок качества Markdown
 
