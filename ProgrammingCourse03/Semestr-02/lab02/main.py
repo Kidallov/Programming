@@ -326,15 +326,3 @@ if __name__ == "__main__":
 
     # Cython version
     result_cython = processor.process_and_show('cython')
-
-
-
-'''
-Размер изображения (5787, 3858, 3)
-Время работы в секундах: 
-standard  : 154.3651
-thread    : 153.6073
-process   : 48.7401
-nogil     : 2.1309
-cython    : 1.2134
-'''
