@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card p-4">
+            <h4 class="mb-3 text-secondary">Параметры поиска</h4>
+            <form method="POST" action="/">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Имя пользователя (username)</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{ request.form.get('username', '') }}" placeholder="Напр: Antonette">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email пользователя</label>
+                    <input type="text" class="form-control" id="email" name="email" value="{{ request.form.get('email', '') }}" placeholder="Напр: Nathan@yesenia.net">
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Заголовок поста</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ request.form.get('title', '') }}" placeholder="Напр: qui">
+                </div>
+                <div class="mb-3">
+                    <label for="body" class="form-label">Текст поста</label>
+                    <input type="text" class="form-control" id="body" name="body" value="{{ request.form.get('body', '') }}" placeholder="Напр: architecto">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Найти</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        {% if searched %}
+            <h3 class="mb-4">Результаты обработки запроса</h3>
+            
+            <ul class="nav nav-tabs mb-3" id="resultTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="users-tab" data-bs-toggle="tab" data-bs-target="#users-panel" type="button" role="tab">
+                        Найденные пользователи <span class="badge bg-secondary">{{ results.users|length }}</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts-panel" type="button" role="tab">
+                        Найденные посты <span class="badge bg-secondary">{{ results.posts|length }}</span>
+                    </button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="resultTabsContent">
+                <div class="tab-pane fade show active" id="users-panel" role="tabpanel">
+                    {% if results.users %}
+                        <div class="row row-cols-1 row-cols-md-2 g-3">
+                            {% for user in results.users %}
+                                <div class="col">
+                                    <div class="card h-100 p-3 border-start border-primary border-4">
+                                        <h5 class="card-title text-primary">{{ user.name }}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">@{{ user.username }}</h6>
+                                        <p class="card-text mb-1"><strong>Email:</strong> {{ user.email }}</p>
+                                        <p class="card-text mb-1"><strong>Тел:</strong> {{ user.phone }}</p>
+                                        <p class="card-text mb-0"><strong>Сайт:</strong> <a href="http://{{ user.website }}" target="_blank">{{ user.website }}</a></p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info">Пользователи по заданным критериям не найдены.</div>
+                    {% endif %}
+                </div>
+
+                <div class="tab-pane fade" id="posts-panel" role="tabpanel">
+                    {% if results.posts %}
+                        <div class="row row-cols-1 g-3">
+                            {% for post in results.posts %}
+                                <div class="col">
+                                    <div class="card p-3 h-100">
+                                        <h5 class="text-dark">{{ post.title|capitalize }}</h5>
+                                        <p class="text-muted small mb-2">
+                                            <strong>Автор:</strong> {{ post.author_name }} (ID автора: {{ post.userId }}) | ID поста: {{ post.id }}
+                                        </p>
+                                        <p class="card-text text-secondary">{{ post.body[:150] }}{% if post.body|length > 150 %}...{% endif %}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info">Посты по заданным критериям не найдены.</div>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-light text-center border p-5">
+                <h5>Заполните поля формы слева и нажмите «Найти»</h5>
+                <p class="text-muted mb-0">Приложение асинхронно обработает сетевые запросы к внешнему REST API.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
