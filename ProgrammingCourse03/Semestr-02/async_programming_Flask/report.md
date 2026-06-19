@@ -45,7 +45,7 @@
 async_search_app/
 │
 ├── app.py               # Точка входа Flask, описание маршрутов и обработка POST-форм
-├── services.py          # Асинхронные методы работы с API (ClientSession, корутины)
+├── services.py          # Асинхронные методы работы с API
 └── templates/
     ├── base.html        # Базовый HTML-каркас с подключенным Bootstrap 5
     └── index.html       # Шаблон формы ввода параметров и карточек результатов
